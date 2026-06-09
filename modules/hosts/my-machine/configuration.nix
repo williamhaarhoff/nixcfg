@@ -3,6 +3,9 @@
 		imports = [ 
 			self.nixosModules.myMachineHardware 
 			self.nixosModules.niri
+			self.nixosModules.orca-slicer
+			self.nixosModules.bambu-studio
+			self.nixosModules.nvidia
 		];
 		nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -20,6 +23,18 @@
 
 		# Enable networking
 		networking.networkmanager.enable = true;
+		networking.nameservers = [
+			"1.1.1.1"
+			"8.8.8.8"
+			"1.0.0.1"
+			"8.8.4.4"			
+		];
+
+		services.resolved = {
+			enable = true;
+			dnssec = "true";
+			domains = [ "~." ];
+		};
 
 		# Set your time zone.
 		time.timeZone = "Pacific/Auckland";
@@ -43,19 +58,6 @@
 			enable = true;
 			wayland.enable = true;
 		};
-
-		# Enable the X11 windowing system.
-		#services.xserver.enable = true;
-
-		# Enable the GNOME Desktop Environment.
-		#services.xserver.displayManager.gdm.enable = true;
-		#services.xserver.desktopManager.gnome.enable = true;
-
-		# Configure keymap in X11
-		#services.xserver.xkb = {
-		#	layout = "us";
-		#	variant = "";
-		#};
 
 		# Enable CUPS to print documents.
 		services.printing.enable = true;
@@ -102,6 +104,7 @@
 			git
 		];
 
+		#services.flatpak.enable = true;
 		# This value determines the NixOS release from which the default
 		# settings for stateful data, like file locations and database versions
 		# on your system were taken. It‘s perfectly fine and recommended to leave

@@ -18,6 +18,8 @@
 					xkb.layout = "us,ua";
 				};
 
+				xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+			
 				layout.gaps = 5;
 
 				binds = {
