@@ -64,14 +64,10 @@
 					"Mod+Shift+R".switch-preset-column-width-back = {};
 
 					# inter monitor focus
-					"Mod+Shift+H".focus-monitor-left = {};
-          "Mod+Shift+L".focus-monitor-right = {};
-					"Mod+Shift+K".focus-monitor-up = {};
-          "Mod+Shift+J".focus-monitor-down = {};
-					"Mod+Shift+Left".focus-monitor-left = {};
-          "Mod+Shift+Right".focus-monitor-right = {};
-					"Mod+Shift+Up".focus-monitor-up = {};
-          "Mod+Shift+Down".focus-monitor-down = {};
+					"Mod+Y".focus-monitor-left = {};
+					"Mod+Home".focus-monitor-left = {};
+          "Mod+O".focus-monitor-right = {};
+          "Mod+End".focus-monitor-right = {};
 
 					# intra monitor focus
           "Mod+H".focus-column-left = {};
@@ -95,24 +91,23 @@
 					"Mod+Comma".consume-window-into-column = {};
 					"Mod+Period".expel-window-from-column = {};
 
-          "Mod+Ctrl+H".move-column-left = {};
-          "Mod+Ctrl+L".move-column-right = {};
-          "Mod+Ctrl+K".move-window-up = {};
-          "Mod+Ctrl+J".move-window-down = {};
-					"Mod+Ctrl+Left".move-column-left = {};
-          "Mod+Ctrl+Right".move-column-right = {};
-          "Mod+Ctrl+Up".move-window-up = {};
-          "Mod+Ctrl+Down".move-window-down = {};
+          "Mod+Shift+H".move-column-left = {};
+          "Mod+Shift+L".move-column-right = {};
+          "Mod+Shift+K".move-window-up = {};
+          "Mod+Shift+J".move-window-down = {};
+					"Mod+Shift+Left".move-column-left = {};
+          "Mod+Shift+Right".move-column-right = {};
+          "Mod+Shift+Up".move-window-up = {};
+          "Mod+Shift+Down".move-window-down = {};
 
 					# inter monitor movement
-          "Mod+Shift+Ctrl+H".move-column-to-monitor-left = {};
-          "Mod+Shift+Ctrl+L".move-column-to-monitor-right = {};
-          "Mod+Shift+Ctrl+K".move-window-to-monitor-up = {};
-          "Mod+Shift+Ctrl+J".move-window-to-monitor-down = {};
-					"Mod+Shift+Ctrl+Left".move-column-to-monitor-left = {};
-          "Mod+Shift+Ctrl+Right".move-column-to-monitor-right = {};
-          "Mod+Shift+Ctrl+Up".move-window-to-monitor-up = {};
-          "Mod+Shift+Ctrl+Down".move-window-to-monitor-down = {};
+          "Mod+Shift+Y".move-column-to-monitor-left = {};
+          "Mod+Shift+O".move-column-to-monitor-right = {};
+
+					# inter workspace movement
+          "Mod+Shift+U".move-column-to-workspace-down = {};
+          "Mod+Shift+I".move-column-to-workspace-up = {};
+
 
           "Mod+1".focus-workspace = "w0";
           "Mod+2".focus-workspace = "w1";
