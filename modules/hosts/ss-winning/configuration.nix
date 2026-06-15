@@ -8,7 +8,7 @@
 			[ # Include the results of the hardware scan.
 				self.nixosModules.ssWinningHardware
 				self.nixosModules.niri
-				self.nixosModules.nvidia
+				self.nixosModules.nvidiaLaptop
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
