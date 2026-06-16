@@ -13,6 +13,7 @@
 		};
 
 		#programs.ssh.enable = true; # todo - split out ssh enable
+		programs.ssh.startAgent = true;
 		programs.ssh.extraConfig = ''
 			Host will-personal
 				HostName github.com
@@ -26,7 +27,10 @@
 				IdentitiesOnly yes
 			'';
 
-		environment.systemPackages = [pkgs.lazygit];
+		environment.systemPackages = [
+			pkgs.lazygit
+			pkgs.gitkraken
+		];
 	};
 }
 
