@@ -18,12 +18,12 @@
 				HostName github.com
 				User git 
 				IdentityFile ~/.ssh/will-personal
-				IdentitesOnly yes
+				IdentitiesOnly yes
 			Host will
 				HostName bitbucket.org
 				User git 
 				IdentityFile ~/.ssh/will
-				IdentitesOnly yes
+				IdentitiesOnly yes
 			'';
 
 		environment.systemPackages = [pkgs.lazygit];
