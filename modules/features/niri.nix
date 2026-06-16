@@ -13,6 +13,15 @@
 			settings = {
 				spawn-at-startup = [
 					(lib.getExe self'.packages.myNoctalia)
+					[
+						"sh" "-c"
+						''
+							while ! ${lib.getExe pkgs.noctalia-shell} ipc call lockScreen lock >/dev/null 2>&1; do
+								sleep 0.5
+							done
+						''
+					]
+
 				];
 				input.keyboard = {
 					xkb.layout = "us,ua";
@@ -51,6 +60,9 @@
 
 					"Mod+Shift+Return".spawn-sh = 
 						"${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+
+					"Mod+Ctrl+L".spawn-sh = 
+						"${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock";
 
 					"Mod+Q".close-window = {};
 

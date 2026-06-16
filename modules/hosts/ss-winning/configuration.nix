@@ -9,6 +9,8 @@
 				self.nixosModules.ssWinningHardware
 				self.nixosModules.niri
 				self.nixosModules.nvidiaLaptop
+				self.nixosModules.bluetooth
+				self.nixosModules.myGit
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -62,17 +64,20 @@
 			LC_TIME = "en_NZ.UTF-8";
 		};
 
-		# Enable the X11 windowing system.
-		#services.xserver.enable = true;
-
-		# Enable the GNOME Desktop Environment.
-		#services.xserver.displayManager.gdm.enable = true;
-		#services.xserver.desktopManager.gnome.enable = true;
-
 		services.displayManager.sddm = {
-			enable = true;
+			enable = false;
 			wayland.enable = true;
 		};
+
+		services.greetd = {
+			enable = true;
+			settings = {
+				default_session = {
+					user = "will";	
+					command = "niri";	
+				};
+			};	
+		};	
 
 		# Enable CUPS to print documents.
 		services.printing.enable = true;
