@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, inputs, ... }: {
-	flake.nixosModules.ssWinningConfiguration = {pkgs, lib, ...}: {
+	flake.nixosModules.ssWinningConfiguration = {pkgs, lib, config, ...}: {
 		imports =
 			[ # Include the results of the hardware scan.
 				self.nixosModules.ssWinningHardware
@@ -11,6 +11,10 @@
 				self.nixosModules.nvidiaLaptop
 				self.nixosModules.bluetooth
 				self.nixosModules.myGit
+				self.nixosModules.quickstart
+				self.nixosModules.netbird
+				self.nixosModules.code
+				self.nixosModules.filemanager
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -39,6 +43,8 @@
 			"8.8.4.4"
 		];
 
+		services.hardware.bolt.enable = true;
+		services.fwupd.enable = true;
 		services.resolved = {
 			enable = true;
 			dnssec = "true";
@@ -66,18 +72,16 @@
 			LC_TIME = "en_NZ.UTF-8";
 		};
 
-		services.displayManager.sddm = {
-			enable = false;
-			wayland.enable = true;
-		};
 
+		services.displayManager.defaultSession = "niri";
 		services.greetd = {
 			enable = true;
 			settings = {
 				default_session = {
 					user = "will";	
-					command = "niri";	
-				};
+					#command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri";
+					command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+				};	
 			};	
 		};	
 
@@ -114,7 +118,6 @@
 
 		# Install firefox.
 		programs.firefox.enable = true;
-
 		# Allow unfree packages
 		nixpkgs.config.allowUnfree = true;
 
