@@ -14,7 +14,7 @@
 
 		# todo - ssh agent does not add the keys on startup - need a solution
 		#programs.ssh.enable = true; # todo - split out ssh enable
-		programs.ssh.startAgent = true;
+		#programs.ssh.startAgent = true;
 		programs.ssh.extraConfig = ''
 			Host will-personal
 				HostName github.com

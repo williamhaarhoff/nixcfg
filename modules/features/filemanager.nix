@@ -8,5 +8,13 @@
 				"org.freedesktop.impl.portal.FileChooser" = "gtk";
 			};
 		};
+
+		# automount external drives
+		services.gvfs.enable = true;
+		services.udisks2.enable = true;
+
+		environment.systemPackages = [
+			pkgs.udiskie
+		];
 	};
 }

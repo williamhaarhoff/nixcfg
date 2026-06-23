@@ -16,6 +16,7 @@
 			just
 			picocom
 			fd
+			kicad
 		];
 
 

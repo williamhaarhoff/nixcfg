@@ -15,6 +15,9 @@
 				self.nixosModules.netbird
 				self.nixosModules.code
 				self.nixosModules.filemanager
+				self.nixosModules.podman
+				#self.nixosModules.docker
+				self.nixosModules.hosts
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -36,22 +39,17 @@
 
 		# Enable networking
 		networking.networkmanager.enable = true;
-		networking.nameservers = [
-			"1.1.1.1"
-			"8.8.8.8"
-			"1.0.0.1"
-			"8.8.4.4"
-		];
+		networking.enableIPv6 = false;
 
-		services.hardware.bolt.enable = true;
 		services.fwupd.enable = true;
 		services.resolved = {
-			enable = true;
-			dnssec = "true";
-			domains = ["~."];
+			enable = false;
+			#dnssec = "allow-downgrade";
+			#domains = ["~."];
+			#fallbackDns = [ "8.8.8.8" "1.1.1.1" ];
 		};
 
-		services.gnome.gcr-ssh-agent.enable = false; # why!!!
+		#services.gnome.gcr-ssh-agent.enable = true; # why!!!
 
 
 		# Set your time zone.
@@ -111,7 +109,7 @@
 		users.users."will" = {
 			isNormalUser = true;
 			description = "will";
-			extraGroups = [ "networkmanager" "wheel" ];
+			extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "dialout" ];
 			packages = with pkgs; [
 			];
 		};
