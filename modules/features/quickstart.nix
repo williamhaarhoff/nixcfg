@@ -17,6 +17,7 @@
 			picocom
 			fd
 			kicad
+			networkmanager
 		];
 
 
