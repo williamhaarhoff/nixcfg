@@ -78,7 +78,7 @@
 				default_session = {
 					user = "will";	
 					#command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri";
-					command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+					command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
 				};	
 			};	
 		};	
