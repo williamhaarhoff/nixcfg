@@ -49,11 +49,10 @@
 			#fallbackDns = [ "8.8.8.8" "1.1.1.1" ];
 		};
 
-		#services.gnome.gcr-ssh-agent.enable = true; # why!!!
+		time.timeZone = "Europe/London";
 
 
 		# Set your time zone.
-		time.timeZone = "Pacific/Auckland";
 
 		# Select internationalisation properties.
 		i18n.defaultLocale = "en_GB.UTF-8";
