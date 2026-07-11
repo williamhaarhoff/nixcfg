@@ -55,6 +55,9 @@
 					"Mod+Ctrl+L".spawn-sh = 
 						"${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock";
 
+					"Mod+Print".screenshot-screen = {};
+					"Mod+Alt+Print".screenshot-window = {};
+
 					"Mod+Q".close-window = {};
 
 					"Mod+F".maximize-column = {};
