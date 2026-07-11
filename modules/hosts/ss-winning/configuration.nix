@@ -7,6 +7,7 @@
 		imports =
 			[ # Include the results of the hardware scan.
 				self.nixosModules.ssWinningHardware
+				self.nixosModules.nixSettings
 				self.nixosModules.niri
 				self.nixosModules.nvidiaLaptop
 				self.nixosModules.bluetooth

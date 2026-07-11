@@ -2,6 +2,7 @@
 	flake.nixosModules.myMachineConfiguration = { pkgs, lib, ...}: {
 		imports = [ 
 			self.nixosModules.myMachineHardware 
+			self.nixosModules.nixSettings
 			self.nixosModules.niri
 			self.nixosModules.orca-slicer
 			self.nixosModules.bambu-studio
