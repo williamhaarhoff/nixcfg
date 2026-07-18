@@ -18,6 +18,7 @@
 			fd
 			kicad
 			networkmanager
+			dnsmasq
 		];
 
 
