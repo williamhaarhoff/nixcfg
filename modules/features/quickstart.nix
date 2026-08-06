@@ -19,6 +19,8 @@
 			kicad
 			networkmanager
 			dnsmasq
+			sqlite
+			rtklib-ex
 		];
 
 
