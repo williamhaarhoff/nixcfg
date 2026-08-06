@@ -1,17 +1,19 @@
 {self, inputs, ...}: {
 	flake.nixosModules.netbird = {pkgs, lib, config, ...}: {
 		services.netbird.enable = true;
-		#services.netbird.clients.wt0 = {
-			#login = {
-			#	enable = true;
-			#	setupKeyFile = "/home/will/netbird-key";
-			#};
 
-			#routeTraffic = true;
-		#	ui.enable = true;
-		#	port=9797;
-		#};
+		systemd.services.netbird-up = {
+			description = "Configure NetBird without DNS management";
+			after = [ "netbird.service" ];
+			requires = [ "netbird.service" ];
+			wantedBy = [ "multi-user.target" ];
 
-		environment.systemPackages = [pkgs.netbird];
+			serviceConfig = {
+				Type = "oneshot";
+				ExecStart = "${pkgs.netbird}/bin/netbird up --disable-dns";
+				RemainAfterExit = true;
+			};
+		};
+		environment.systemPackages = [ pkgs.netbird ];
 	};
 }

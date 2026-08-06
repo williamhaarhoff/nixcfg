@@ -32,28 +32,19 @@
 
 		boot.initrd.luks.devices."luks-0e1995d3-ba0e-40f9-bdaa-c405d243d4f5".device = "/dev/disk/by-uuid/0e1995d3-ba0e-40f9-bdaa-c405d243d4f5";
 		networking.hostName = "ss-winning"; # Define your hostname.
-		# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-		# Configure network proxy if necessary
-		# networking.proxy.default = "http://user:password@proxy:port/";
-		# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 		# Enable networking
 		networking.networkmanager.enable = true;
-		networking.enableIPv6 = false;
+		networking.networkmanager.dns = "default";
+		networking.enableIPv6 = true;
+		networking.networkmanager.insertNameservers = [ "127.0.0.1" "8.8.8.8" ]; # fallback if gateway doesn't have nameserver
+		services.resolved.enable = false;
 
 		services.fwupd.enable = true;
-		services.resolved = {
-			enable = false;
-			#dnssec = "allow-downgrade";
-			#domains = ["~."];
-			#fallbackDns = [ "8.8.8.8" "1.1.1.1" ];
-		};
-
-		time.timeZone = "Europe/London";
 
 
 		# Set your time zone.
+		time.timeZone = "Europe/London";
 
 		# Select internationalisation properties.
 		i18n.defaultLocale = "en_GB.UTF-8";
