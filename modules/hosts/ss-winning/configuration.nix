@@ -20,6 +20,7 @@
 				#self.nixosModules.docker
 				self.nixosModules.hosts
 				self.nixosModules.qgis
+				self.nixosModules.bambu-studio
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
