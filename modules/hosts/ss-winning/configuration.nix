@@ -4,23 +4,26 @@
 
 { self, inputs, ... }: {
 	flake.nixosModules.ssWinningConfiguration = {pkgs, lib, config, ...}: {
-		imports =
+		imports = with self.nixosModules;
 			[ # Include the results of the hardware scan.
-				self.nixosModules.ssWinningHardware
-				self.nixosModules.nixSettings
-				self.nixosModules.niri
-				self.nixosModules.nvidiaLaptop
-				self.nixosModules.bluetooth
-				self.nixosModules.myGit
-				self.nixosModules.quickstart
-				self.nixosModules.netbird
-				self.nixosModules.code
-				self.nixosModules.filemanager
-				self.nixosModules.podman
-				#self.nixosModules.docker
-				self.nixosModules.hosts
-				self.nixosModules.qgis
-				self.nixosModules.bambu-studio
+				ssWinningHardware
+				greeter
+				nixSettings
+				niri
+				nvidiaLaptop
+				bluetooth
+				myGit
+				quickstart
+				netbird
+				code
+				filemanager
+				podman
+				#docker
+				hosts
+				qgis
+				bambu-studio
+				stlink
+				hosts
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
