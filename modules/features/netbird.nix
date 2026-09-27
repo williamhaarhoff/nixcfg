@@ -10,7 +10,7 @@
 
 			serviceConfig = {
 				Type = "oneshot";
-				ExecStart = "${pkgs.netbird}/bin/netbird up --disable-dns";
+				ExecStart = "${pkgs.netbird}/bin/netbird up --disable-dns --dns-resolver-address \"127.0.0.1:53\"";
 				RemainAfterExit = true;
 			};
 		};
