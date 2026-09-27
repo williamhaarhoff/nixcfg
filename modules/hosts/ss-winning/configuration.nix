@@ -24,6 +24,7 @@
 				bambu-studio
 				stlink
 				hosts
+				pragmatism
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
