@@ -75,6 +75,20 @@
 				};	
 			};	
 		};	
+		systemd.services.greetd = {
+			unitConfig = {
+				After = [ "multi-user.target" ]; # Ensures crucial logs finish first
+			};
+			serviceConfig = {
+				Type = "idle"; # Waits for systemd to finish printing all queue logs
+				StandardInput = "tty";
+				StandardOutput = "null"; # Silences standard system output over the greeter
+				StandardError = "journal"; # Routes errors safely to journald instead of the screen
+				TTYReset = true;
+				TTYVHangup = true;
+				TTYVTDisallocate = true;
+			};
+		};
 
 		# Enable CUPS to print documents.
 		services.printing.enable = true;
