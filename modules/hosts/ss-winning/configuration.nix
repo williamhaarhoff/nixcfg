@@ -42,7 +42,7 @@
 		networking.networkmanager.enable = true;
 		networking.networkmanager.dns = "default";
 		networking.enableIPv6 = true;
-		networking.networkmanager.insertNameservers = [ "127.0.0.1" "8.8.8.8" ]; # fallback if gateway doesn't have nameserver
+		networking.networkmanager.appendNameservers = [ "8.8.8.8" ]; # fallback if gateway doesn't have nameserver
 		services.resolved.enable = false;
 
 		services.fwupd.enable = true;

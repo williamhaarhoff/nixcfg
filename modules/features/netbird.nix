@@ -14,6 +14,11 @@
 				RemainAfterExit = true;
 			};
 		};
+
+		networking.networkmanager.insertNameservers = ["127.0.0.1"];	
+
+		networking.search = [ "netbird.cloud" ];
+
 		environment.systemPackages = [ pkgs.netbird ];
 	};
 }
