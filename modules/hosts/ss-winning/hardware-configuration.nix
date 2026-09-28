@@ -29,10 +29,16 @@
 			[ { device = "/dev/mapper/luks-0e1995d3-ba0e-40f9-bdaa-c405d243d4f5"; }
 			];
 
-		# external ssd
+		# external ssd 
 		fileSystems."/mnt/my-drive" = {
 			device = "/dev/disk/by-uuid/45fff69b-fb23-4b95-bf06-bb6bb0d4d3a3";
 			fsType = "ext4";
+		};
+
+		# nvidia settings
+		hardware.nvidia.prime = {
+			nvidiaBusId = lib.mkDefault "PCI:5:0:0";
+			amdgpuBusId = lib.mkDefault "PCI:6:0:0";
 		};
 
 		nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
