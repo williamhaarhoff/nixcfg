@@ -13,7 +13,7 @@
 		};
 	};
 
-	flake.nixosModules.nvidiaLaptop = {pkgs, lib, config, ...}: {
+	flake.nixosModules.nvidia-laptop = {pkgs, lib, config, ...}: {
 		hardware.graphics.enable = true; 
 		hardware.graphics.enable32Bit = true;
 		services.xserver.videoDrivers = ["nvidia"];

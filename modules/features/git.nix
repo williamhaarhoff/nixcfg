@@ -1,5 +1,5 @@
 {self, inputs, ...}: {
-	flake.nixosModules.myGit = {pkgs, lib, config, ...}: {
+	flake.nixosModules.git = {pkgs, lib, config, ...}: {
 		programs.git = {
 			enable = true;
 			config = {

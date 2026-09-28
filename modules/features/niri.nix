@@ -3,16 +3,16 @@
 	flake.nixosModules.niri = {pkgs, lib, ...}: {
 		programs.niri = {
 			enable = true;
-			package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
+			package = self.packages.${pkgs.stdenv.hostPlatform.system}.my-niri;
 		};
 	};
 
 	perSystem = { pkgs, lib, self', ... }: {
-		packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
+		packages.my-niri = inputs.wrapper-modules.wrappers.niri.wrap {
 			inherit pkgs;
 			settings = {
 				spawn-at-startup = [
-					(lib.getExe self'.packages.myNoctalia)
+					(lib.getExe self'.packages.my-noctalia)
 				];
 				input.keyboard = {
 					xkb.layout = "us,ua";
@@ -50,10 +50,10 @@
 					"Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
 					"Mod+Shift+Return".spawn-sh = 
-						"${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+						"${lib.getExe self'.packages.my-noctalia} ipc call launcher toggle";
 
 					"Mod+Ctrl+L".spawn-sh = 
-						"${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock";
+						"${lib.getExe self'.packages.my-noctalia} ipc call lockScreen lock";
 
 					"Mod+Print".screenshot-screen = {};
 					"Mod+Alt+Print".screenshot-window = {};

@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { self, inputs, ... }: {
-	flake.nixosModules.ssWinningHardware = { config, lib, pkgs, modulesPath, ... }: {
+	flake.nixosModules.ss-winning-hardware = { config, lib, pkgs, modulesPath, ... }: {
 		imports =
 			[ (modulesPath + "/installer/scan/not-detected.nix")
 			];

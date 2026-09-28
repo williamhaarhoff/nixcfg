@@ -3,16 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, inputs, ... }: {
-	flake.nixosModules.ssWinningConfiguration = {pkgs, lib, config, ...}: {
+	flake.nixosModules.ss-winning-configuration = {pkgs, lib, config, ...}: {
 		imports = with self.nixosModules;
 			[ # Include the results of the hardware scan.
-				ssWinningHardware
+				ss-winning-hardware
 				greeter
-				nixSettings
+				nix-settings
 				niri
-				nvidiaLaptop
+				nvidia-laptop
 				bluetooth
-				myGit
+				git
 				quickstart
 				netbird
 				code

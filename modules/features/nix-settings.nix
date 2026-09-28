@@ -1,5 +1,5 @@
 {self, inputs, ...}: {
-  flake.nixosModules.nixSettings = {pkgs, lib, config, ...}: {
+  flake.nixosModules.nix-settings = {pkgs, lib, config, ...}: {
     nix.settings ={
         access-tokens = [
           #"github.com=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"
