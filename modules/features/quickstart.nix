@@ -22,12 +22,5 @@
 			sqlite
 			rtklib-ex
 		];
-
-
-
-		fileSystems."/mnt/my-drive" = {
-			device = "/dev/disk/by-uuid/45fff69b-fb23-4b95-bf06-bb6bb0d4d3a3";
-			fsType = "ext4";
-		};
 	};
 }
