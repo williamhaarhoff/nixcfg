@@ -7,6 +7,7 @@
 		imports = with self.nixosModules;
 			[ # Include the results of the hardware scan.
 				ss-winning-hardware
+				#multiverse
 				greeter
 				nix-settings
 				niri

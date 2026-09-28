@@ -1,21 +1,15 @@
-{self, inputs, ...}: {
-
-	flake.nixosModules.bambu-studio = {pkgs, lib, ...}: 
-
-	let
-		cached-bambu-pkgs = import (builtins.fetchTree {
-			type = "github";
-			owner = "NixOS";
-			repo = "nixpkgs";
-			rev = "705e9929918b43bd7b715dc0a878ac870449bb03"; # hydra-check bambu-studio -channel 26.05
-		}) {
-			system = pkgs.system;
-			config.allowUnfreePredicate = pkg:
-			builtins.elem (lib.getName pkg) [ "bambu-studio" ];
+{ self, inputs, ... }: {
+  flake.nixosModules.bambu-studio = { pkgs, ... }:
+    let
+		system = "x86_64-linux";
+		mv = inputs.multiverse.lib.mkMultiverse {
+			inherit system;
+			#config.allowUnfree = true;
 		};
-	in {
-		environment.systemPackages = [
-			cached-bambu-pkgs.bambu-studio
-		];
-	};
+    in
+    {
+      environment.systemPackages = [
+        (mv.version "bambu-studio" "02.04.00.70")
+      ];
+    };
 }
