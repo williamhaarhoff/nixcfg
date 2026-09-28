@@ -1,5 +1,7 @@
 {
   inputs = {
+    multiverse.url = "github:fzakaria/nixpkgs-multiverse";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
