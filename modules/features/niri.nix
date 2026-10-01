@@ -1,12 +1,24 @@
 { self, inputs, ...}: {
 
-	flake.nixosModules.niri = {pkgs, lib, ...}: {
+	# customise preconfigured niri, for the host system
+	flake.nixosModules.niri = {pkgs, lib, config, ...}: {
 		programs.niri = {
 			enable = true;
-			package = self.packages.${pkgs.stdenv.hostPlatform.system}.my-niri;
+			
+			# wrap again to apply igpu, dgpu, nvidia prime offload settings
+			package = self.packages.${pkgs.stdenv.hostPlatform.system}.my-niri.wrap {
+				settings.debug = lib.mkIf
+				config.hardware.nvidia.prime.offload.enable
+				{
+					render-drm-device = config.my.hardware.graphics.igpu.drm;
+					ignore-drm-device = config.my.hardware.graphics.dgpu.drm;
+				};
+			};
+
 		};
 	};
 
+	# base, pure standalone, preconfigured niri
 	perSystem = { pkgs, lib, self', ... }: {
 		packages.my-niri = inputs.wrapper-modules.wrappers.niri.wrap {
 			inherit pkgs;
@@ -16,7 +28,9 @@
 				];
 				input.keyboard = {
 					xkb.layout = "us,ua";
-				};
+				};	
+
+				outputs."eDP-1".scale = 1.25;
 
 				xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 			

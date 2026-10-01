@@ -21,6 +21,9 @@
 			dnsmasq
 			sqlite
 			rtklib-ex
+			psmisc
+			pciutils
+			lsof
 		];
 	};
 }

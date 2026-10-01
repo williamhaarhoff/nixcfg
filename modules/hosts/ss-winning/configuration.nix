@@ -8,6 +8,7 @@
 			[ # Include the results of the hardware scan.
 				ss-winning-hardware
 				#multiverse
+				power-management
 				greeter
 				nix-settings
 				niri
@@ -47,7 +48,7 @@
 		networking.networkmanager.appendNameservers = [ "8.8.8.8" ]; # fallback if gateway doesn't have nameserver
 		services.resolved.enable = false;
 
-		services.fwupd.enable = true;
+		# services.fwupd.enable = true;
 
 
 		# Set your time zone.

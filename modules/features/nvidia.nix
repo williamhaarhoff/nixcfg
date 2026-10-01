@@ -16,7 +16,7 @@
 	flake.nixosModules.nvidia-laptop = {pkgs, lib, config, ...}: {
 		hardware.graphics.enable = true; 
 		hardware.graphics.enable32Bit = true;
-		services.xserver.videoDrivers = ["nvidia"];
+		services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 		hardware.nvidia = {
 			modesetting.enable = true;
 			open = true;
@@ -30,5 +30,4 @@
 			};
 		};
 	};
-
 }
