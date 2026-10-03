@@ -27,6 +27,7 @@
 				stlink
 				hosts
 				fhs-compat
+				codex
 			];
 
 		nix.settings.experimental-features = ["nix-command" "flakes"];
