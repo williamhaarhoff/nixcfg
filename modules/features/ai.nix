@@ -23,8 +23,11 @@
             --bind /proc /proc \
             --dev /dev \
             --dir /home/codex \
+            --dir /home/codex/project \
             --setenv HOME /home/codex \
             --bind "$HOME/.codex" /home/codex/.codex \
+            --bind "$PWD" /home/codex/project \
+            --chdir /home/codex/project \
         '';
     in
     {
@@ -47,7 +50,7 @@
                 pkgs.codex
             ];
 
-            text = '' ${sandbox} -- codex "!@" '';
+            text = '' ${sandbox} codex "$@" '';
        };
     };
 }
