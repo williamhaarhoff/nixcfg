@@ -24,6 +24,7 @@
 			psmisc
 			pciutils
 			lsof
+			uv
 		];
 	};
 }
