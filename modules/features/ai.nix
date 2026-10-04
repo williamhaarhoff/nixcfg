@@ -6,40 +6,48 @@
     # };
 
     flake.nixosModules.codex = {pkgs, lib, config, ...}: {
-        environment.systemPackages = [ pkgs.codex self.packages.${pkgs.system}.codex-wrapped ];
+        environment.systemPackages = [ 
+            self.packages.${pkgs.system}.codex-wrapped
+            self.packages.${pkgs.system}.codex-sandbox 
+        ];
     };
 
-	perSystem = { pkgs, lib, self', ... }: {
-        
-        packages.codex-wrapped = pkgs.writeShellApplication {
-        name = "codex-wrapped";
+	perSystem = { pkgs, lib, self', ... }: 
 
-        runtimeInputs = [
-            pkgs.bubblewrap
-            pkgs.codex
-            pkgs.cacert
-        ];
-
-        text = ''
-            exec bwrap \
-            --ro-bind /nix/store /nix/store \
-            --ro-bind /etc/resolv.conf /etc/resolv.conf \
-            --setenv SSL_CERT_FILE ${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt \
-            --setenv NIX_SSL_CERT_FILE ${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt \
-            --proc /proc \
-            --dev /dev \
-            --tmpfs /tmp \
+    
+    let 
+        sandbox = ''
+            bwrap \
+            --bind / / \
             --tmpfs /home \
+            --bind /proc /proc \
+            --dev /dev \
             --dir /home/codex \
             --setenv HOME /home/codex \
             --bind "$HOME/.codex" /home/codex/.codex \
-            --bind "$PWD" /workspace \
-            --chdir /workspace \
-            --share-net \
-            --new-session \
-            --die-with-parent \
-            codex "$@"
         '';
-        };
+    in
+    {
+        packages.codex-sandbox = pkgs.writeShellApplication {
+            name = "codex-sandbox";
+
+            runtimeInputs = [
+                pkgs.bubblewrap
+                pkgs.codex
+            ];
+
+            text = '' ${sandbox} bash "$@" '';
+        }; 
+
+        packages.codex-wrapped = pkgs.writeShellApplication {
+            name = "codex-wrapped";
+
+            runtimeInputs = [
+                pkgs.bubblewrap
+                pkgs.codex
+            ];
+
+            text = '' ${sandbox} -- codex "!@" '';
+       };
     };
 }
