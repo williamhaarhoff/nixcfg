@@ -7,6 +7,7 @@
 			self.nixosModules.orca-slicer
 			self.nixosModules.bambu-studio
 			self.nixosModules.nvidia
+			self.nixosModules.llama-server
 		];
 		nix.settings.experimental-features = ["nix-command" "flakes"];
 

@@ -8,7 +8,8 @@
 			[ # Include the results of the hardware scan.
 				ss-winning-hardware
 				#multiverse
-				vllm-container
+				#vllm-server
+				llama-server
 				power-management
 				greeter
 				nix-settings
