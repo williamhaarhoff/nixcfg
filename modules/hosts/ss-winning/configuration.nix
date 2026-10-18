@@ -8,6 +8,7 @@
 			[ # Include the results of the hardware scan.
 				ss-winning-hardware
 				#multiverse
+				vllm-container
 				power-management
 				greeter
 				nix-settings
